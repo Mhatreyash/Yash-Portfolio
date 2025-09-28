@@ -35,19 +35,19 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled || isMobileMenuOpen
-        ? "bg-background/95 backdrop-blur-lg shadow-soft border-b border-border/50" 
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen
+        ? "bg-background/95 backdrop-blur-lg shadow-soft border-b border-border/50"
         : "bg-transparent"
-    }`}>
+      }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-2xl font-bold text-primary hover:text-primary-glow transition-colors"
+            className="flex items-center gap-2 text-2xl font-bold text-primary hover:text-primary-glow transition-colors"
           >
-            Yash Mhatre
+            <img src="../../public/favicon.ico" alt="Icon" className="w-6 h-6" />
+            {/* <span>Yash Mhatre</span> */}
           </button>
 
           {/* Desktop Navigation */}

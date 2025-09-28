@@ -9,7 +9,7 @@ export const Contact = () => {
       icon: Mail,
       label: "Email",
       value: "yashmhatre2810@gmail.com",
-      href: "mailto:yashmhatre2810@gmail.com",
+      href: "https://mail.google.com/mail/u/1/#inbox?compose=CllgCHrgmVVzCnXkzxxnsQWjvKGbznFwTkgSFSdMLvLZWlvGCrGVlkxMtZjBmTkrLFkSsgTclRL",
       description: "Get in touch for opportunities"
     },
     {

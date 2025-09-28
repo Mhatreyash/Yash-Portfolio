@@ -1,8 +1,18 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award, Trophy, Sparkles, Users } from "lucide-react";
+import { Award, Trophy, Sparkles, Users, Medal } from "lucide-react";
 
 export const Certifications = () => {
+  const presentations = [
+     {
+      name: "1st prize",
+      description: "MSBTE's State Level Technical Paper Presentation"
+    },
+    {
+      name: "1st prize ",
+      description: "B.V.P's State Level Technical Paper Presentation"
+    }
+  ]
   const certifications = [
     {
       icon: Award,
@@ -51,11 +61,33 @@ export const Certifications = () => {
           <h2 className="heading-section">Certifications & Achievements</h2>
           <div className="w-24 h-1 bg-gradient-hero mx-auto rounded-full"></div>
         </div>
-        
+
+        <div className="grid gap-8 mb-12">
+          <Card className="p-8 shadow-card bg-gradient-card border-0">
+            <div className="text-center space-y-6">
+              <div className="flex items-center justify-center gap-3">
+                <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                  <Medal className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary">Technical Paper Presentations</h3>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {presentations.map((hackathon, index) => (
+                  <div key={index} className="text-center space-y-2">
+                    <h4 className="font-semibold text-foreground">{hackathon.name}</h4>
+                    <p className="text-sm text-muted-foreground">{hackathon.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+        </div>
+
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {certifications.map((cert, index) => (
-            <Card 
-              key={cert.title} 
+            <Card
+              key={cert.title}
               className={`p-6 shadow-card hover-lift bg-gradient-to-br ${cert.gradient} backdrop-blur-sm border ${cert.borderColor} transition-all duration-500 hover:scale-105 group`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
@@ -68,14 +100,14 @@ export const Certifications = () => {
                     {cert.type}
                   </Badge>
                 </div>
-                
+
                 <div>
                   <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                     {cert.title}
                   </h3>
                   <p className="text-sm font-medium text-primary mt-1">{cert.issuer}</p>
                 </div>
-                
+
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {cert.description}
                 </p>
@@ -83,7 +115,7 @@ export const Certifications = () => {
             </Card>
           ))}
         </div>
-        
+
         {/* Hackathon Participation */}
         <Card className="p-8 shadow-card bg-gradient-card border-0">
           <div className="text-center space-y-6">
@@ -93,7 +125,7 @@ export const Certifications = () => {
               </div>
               <h3 className="text-2xl font-bold text-primary">Hackathon Participation</h3>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               {hackathons.map((hackathon, index) => (
                 <div key={index} className="text-center space-y-2">
@@ -104,7 +136,7 @@ export const Certifications = () => {
             </div>
           </div>
         </Card>
-        
+
       </div>
     </section>
   );

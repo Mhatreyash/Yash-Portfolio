@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Download } from "lucide-react";
 import profileHero from "@/assets/profile-hero.jpg";
 
 export const Hero = () => {
@@ -9,7 +9,7 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary-glow/10 rounded-full blur-3xl"></div>
-      
+
       <div className="container mx-auto px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -30,12 +30,12 @@ export const Hero = () => {
                 </h4>
               </div>
             </div>
-            
+
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-              2nd year B.Tech student passionate about innovation, AI, and software development 
+              2nd year B.Tech student passionate about innovation, AI, and software development
               with expertise across multiple programming languages and frameworks.
             </p>
-            
+
             <div className="flex flex-wrap gap-4">
               <Button variant="hero" asChild>
                 <a href="#contact">
@@ -44,29 +44,22 @@ export const Hero = () => {
                 </a>
               </Button>
               <Button variant="outline" asChild>
-                <a href="https://linkedin.com/in/yashmhatre" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="w-5 h-5" />
-                  View LinkedIn
-                  <ExternalLink className="w-4 h-4" />
+                <a href="/src/assets/yash_resume.pdf" download="yash_resume.pdf">
+                  <Download className="w-5 h-5" />
+                  Download Resume
                 </a>
               </Button>
-              <Button variant="outline" asChild>
-                <a href="https://github.com/mhatreyash" target="_blank" rel="noopener noreferrer">
-                  <Github className="w-5 h-5" />
-                  View GitHub
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </Button>
+
             </div>
-            
+
           </div>
-          
+
           {/* Profile Image */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-hero rounded-2xl blur-2xl opacity-20 scale-105"></div>
-              <img 
-                src={profileHero} 
+              <img
+                src={profileHero}
                 alt="Yash Mhatre - Computer Engineering Student & AI Enthusiast"
                 className="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl shadow-hero animate-float hover-lift"
               />

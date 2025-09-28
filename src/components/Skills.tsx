@@ -10,12 +10,6 @@ export const Skills = () => {
       gradient: "from-purple-500/20 to-blue-500/20"
     },
     {
-      icon: Code,
-      title: "Data Structures & Algorithms",
-      description: "Strong foundation in DSA with practical implementation across multiple programming languages.",
-      gradient: "from-blue-500/20 to-cyan-500/20"
-    },
-    {
       icon: Server,
       title: "Backend Development",
       description: "Expertise in Python frameworks including FastAPI, Django, and Flask for scalable solutions.",
@@ -26,6 +20,12 @@ export const Skills = () => {
       title: "Database Management",
       description: "Proficient in database design, CRUD operations, and data optimization techniques.",
       gradient: "from-orange-500/20 to-red-500/20"
+    },
+    {
+      icon: Code,
+      title: "Data Structures & Algorithms",
+      description: "Strong foundation in DSA with practical implementation across multiple programming languages.",
+      gradient: "from-blue-500/20 to-cyan-500/20"
     }
   ];
 

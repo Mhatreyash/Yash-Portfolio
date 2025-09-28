@@ -14,20 +14,20 @@ export const Projects = () => {
       borderColor: "border-purple-500/20"
     },
     {
-      icon: Gamepad2,
-      title: "Othello Game",
-      description: "Modern twist on the classic strategy game featuring CPU vs human gameplay. \"Where the board meets brilliance!\" - showcasing how technology elevates traditional games to new heights.",
-      tags: ["Game Development", "AI Strategy", "Interactive Gaming", "Algorithm Implementation"],
-      gradient: "from-green-500/10 to-emerald-500/10",
-      borderColor: "border-green-500/20"
-    },
-    {
       icon: TrendingUp,
       title: "Linear Drive - ML Predictor",
       description: "Machine learning project predicting car Miles per Gallon based on Horsepower and Weight using Linear Regression. Features data visualization, model evaluation with MSE and R² scores.",
       tags: ["Machine Learning", "Linear Regression", "Data Visualization", "Predictive Analytics"],
       gradient: "from-orange-500/10 to-red-500/10",
       borderColor: "border-orange-500/20"
+    },
+    {
+      icon: Gamepad2,
+      title: "Othello Game",
+      description: "Modern twist on the classic strategy game featuring CPU vs human gameplay. \"Where the board meets brilliance!\" - showcasing how technology elevates traditional games to new heights.",
+      tags: ["Game Development", "AI Strategy", "Interactive Gaming", "Algorithm Implementation"],
+      gradient: "from-green-500/10 to-emerald-500/10",
+      borderColor: "border-green-500/20"
     }
   ];
 
