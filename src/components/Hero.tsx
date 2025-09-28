@@ -59,11 +59,6 @@ export const Hero = () => {
               </Button>
             </div>
             
-            <div className="pt-8">
-              <p className="text-sm text-muted-foreground italic">
-                Made with ❤️ GAMMA
-              </p>
-            </div>
           </div>
           
           {/* Profile Image */}

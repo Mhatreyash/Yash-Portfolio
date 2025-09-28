@@ -82,11 +82,6 @@ export const Education = () => {
           </div>
         </div>
         
-        <div className="text-center mt-12">
-          <p className="text-sm text-muted-foreground italic">
-            Made with ❤️ GAMMA
-          </p>
-        </div>
       </div>
     </section>
   );
