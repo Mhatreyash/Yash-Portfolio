@@ -1,8 +1,26 @@
+// File: src/components/Hero.tsx
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, ExternalLink, Download } from "lucide-react";
 import profileHero from "@/assets/profile-hero.jpg";
+import { motion } from "framer-motion";
 
 export const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-section relative overflow-hidden">
       {/* Background decoration */}
@@ -13,9 +31,14 @@ export const Hero = () => {
       <div className="container mx-auto px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="space-y-8 animate-fade-in">
-            <div className="space-y-4">
-              <h1 className="heading-hero animate-slide-up">
+          <motion.div
+            className="space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div className="space-y-4" variants={itemVariants}>
+              <h1 className="heading-hero">
                 Yash Mhatre
               </h1>
               <div className="space-y-2">
@@ -29,14 +52,17 @@ export const Hero = () => {
                   Software Developer
                 </h4>
               </div>
-            </div>
+            </motion.div>
 
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+            <motion.p
+              className="text-lg text-muted-foreground leading-relaxed max-w-lg"
+              variants={itemVariants}
+            >
               2nd year B.Tech student passionate about innovation, AI, and software development
               with expertise across multiple programming languages and frameworks.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-4">
+            <motion.div className="flex flex-wrap gap-4" variants={itemVariants}>
               <Button variant="hero" asChild>
                 <a href="#contact">
                   <Mail className="w-5 h-5" />
@@ -49,21 +75,24 @@ export const Hero = () => {
                   Download Resume
                 </a>
               </Button>
-
-            </div>
-
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Profile Image */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative">
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+            >
               <div className="absolute inset-0 bg-gradient-hero rounded-2xl blur-2xl opacity-20 scale-105"></div>
               <img
                 src={profileHero}
                 alt="Yash Mhatre - Computer Engineering Student & AI Enthusiast"
                 className="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl shadow-hero animate-float hover-lift"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

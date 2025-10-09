@@ -1,14 +1,40 @@
+// File: src/components/Experience.tsx
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, CheckCircle } from "lucide-react";
 import profileExperience from "@/assets/profile-experience.jpg";
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export const Experience = () => {
   const achievements = [
-    "Collaborated with development teams using Git version control",
+
     "Enhanced understanding of API design and backend architecture",
+    "Collaborated with development teams using Git version control",
     "Implemented security practices and database management"
   ];
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.2 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [isInView, controls]);
+
+  const itemVariants = (delay: number) => ({
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 150, damping: 20, delay }
+    },
+  });
 
   return (
     <section id="experience" className="py-20 bg-background">
@@ -17,10 +43,15 @@ export const Experience = () => {
           <h2 className="heading-section">Professional Experience</h2>
           <div className="w-24 h-1 bg-gradient-hero mx-auto rounded-full"></div>
         </div>
-        
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div ref={ref} className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            variants={itemVariants(0)}
+            initial="hidden"
+            animate={controls}
+          >
             <Card className="p-8 shadow-card hover-lift bg-gradient-card border-0">
               <div className="space-y-6">
                 <div className="flex items-start justify-between flex-wrap gap-4">
@@ -37,13 +68,13 @@ export const Experience = () => {
                     May 2024 - July 2024
                   </Badge>
                 </div>
-                
+
                 <p className="text-muted-foreground leading-relaxed">
-                  Gained hands-on experience in backend development using Python and API frameworks. 
-                  Built and deployed RESTful APIs, implemented CRUD operations, and integrated JWT 
+                  Gained hands-on experience in backend development using Python and API frameworks.
+                  Built and deployed RESTful APIs, implemented CRUD operations, and integrated JWT
                   authentication mechanisms.
                 </p>
-                
+
                 <div className="space-y-3">
                   <h5 className="font-semibold text-foreground">Key Achievements:</h5>
                   <ul className="space-y-2">
@@ -55,7 +86,7 @@ export const Experience = () => {
                     ))}
                   </ul>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2 pt-4">
                   {["Python", "API Development", "JWT Authentication", "Git", "Backend Architecture", "Database Management"].map((tech) => (
                     <Badge key={tech} variant="outline" className="border-primary/20 text-primary">
@@ -65,21 +96,26 @@ export const Experience = () => {
                 </div>
               </div>
             </Card>
-          </div>
-          
+          </motion.div>
+
           {/* Experience Image */}
-          <div className="flex justify-center">
+          <motion.div
+            className="flex justify-center"
+            variants={itemVariants(0.2)}
+            initial="hidden"
+            animate={controls}
+          >
             <div className="relative">
               <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-xl scale-105"></div>
-              <img 
-                src={profileExperience} 
+              <img
+                src={profileExperience}
                 alt="Yash Mhatre - Professional Experience"
                 className="relative w-full max-w-md h-auto object-cover rounded-2xl shadow-card animate-float"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
-        
+
       </div>
     </section>
   );

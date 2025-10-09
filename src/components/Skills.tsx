@@ -1,5 +1,8 @@
+// File: src/components/Skills.tsx
 import { Card } from "@/components/ui/card";
 import { Brain, Code, Server, Database } from "lucide-react";
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export const Skills = () => {
   const skills = [
@@ -29,6 +32,36 @@ export const Skills = () => {
     }
   ];
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.2 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [isInView, controls]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 150, damping: 20 }
+    },
+  };
+
   return (
     <section id="skills" className="py-20 bg-gradient-section">
       <div className="container mx-auto px-6">
@@ -36,31 +69,37 @@ export const Skills = () => {
           <h2 className="heading-section">Technical Skills</h2>
           <div className="w-24 h-1 bg-gradient-hero mx-auto rounded-full"></div>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map((skill, index) => (
-            <Card 
-              key={skill.title} 
-              className={`p-6 shadow-card hover-lift bg-gradient-to-br ${skill.gradient} backdrop-blur-sm border-0 transition-all duration-500 hover:scale-105`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="text-center space-y-4">
-                <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                  <skill.icon className="w-8 h-8 text-primary" />
+
+        <motion.div
+          ref={ref}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          {skills.map((skill) => (
+            <motion.div key={skill.title} variants={itemVariants}>
+              <Card
+                className={`p-6 shadow-card hover-lift bg-gradient-to-br ${skill.gradient} backdrop-blur-sm border-0 transition-all duration-500 hover:scale-105 h-full`}
+              >
+                <div className="text-center space-y-4">
+                  <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <skill.icon className="w-8 h-8 text-primary" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-foreground">
+                    {skill.title}
+                  </h3>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {skill.description}
+                  </p>
                 </div>
-                
-                <h3 className="text-xl font-bold text-foreground">
-                  {skill.title}
-                </h3>
-                
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {skill.description}
-                </p>
-              </div>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </div>
-        
+        </motion.div>
+
       </div>
     </section>
   );

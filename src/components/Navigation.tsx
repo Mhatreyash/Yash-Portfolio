@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import navIcon from "@/assets/favicon.ico";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,7 +47,7 @@ export const Navigation = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center gap-2 text-2xl font-bold text-primary hover:text-primary-glow transition-colors"
           >
-            <img src="../../public/favicon.ico" alt="Icon" className="w-6 h-6" />
+            <img src={navIcon} alt="Icon" className="w-6 h-6" />
             {/* <span>Yash Mhatre</span> */}
           </button>
 
